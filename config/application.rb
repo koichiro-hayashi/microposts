@@ -21,11 +21,11 @@ module Microposts
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-      config.generators do |g|
-        g.stylesheets false
-        g.javascripts false
-        g.helper false
-        g.test_framework false
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.test_framework false
     end
   end
 end
