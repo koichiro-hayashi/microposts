@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
+  
   before_action :set_user, only: [:edit, :update]
 
   def edit # ユーザー情報の編集
@@ -13,10 +18,6 @@ class UsersController < ApplicationController
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
-  end
-  
-  def show # 追加
-   @user = User.find(params[:id])
   end
 
   def new
