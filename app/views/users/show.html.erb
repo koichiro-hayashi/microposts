@@ -1,4 +1,19 @@
 <h1>
+  プロフィール情報
+</h1>	
+
+<div class="row">
+  <div class="col-sm-4">
   <%= gravatar_for @user %> <!-- アイコン画像の取得from gravatar --> 
   <%= @user.name %> <!-- ユーザーネームの取得 -->
-</h1>
+  </div>  
+</div>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">地域:</label>
+		<div class="col-sm-10">
+			<p class="form-control-static"><%= @user.area %> <!-- ユーザー所在値の明示化 --></p>
+		</div>
+	</div>
+</form>
