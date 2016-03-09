@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
+  
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
   end
   
-  before_action :set_user, only: [:edit, :update]
-
   def edit # ユーザー情報の編集
     @user = User.find(params[:id])
+    if logged_in? && current_user == @user
+      # ログインユーザーと同じ
+    else
+      # ログインユーザーとは異なる
+    end
   end
   
   def update
