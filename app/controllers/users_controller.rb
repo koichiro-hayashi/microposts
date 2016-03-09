@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-
+  
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
+  
   def edit # ユーザー情報の編集
     @user = User.find(params[:id])
+    if logged_in? && current_user == @user
+      # ログインユーザーと同じ
+    else
+      # ログインユーザーとは異なる
+    end
   end
   
   def update
@@ -13,10 +23,6 @@ class UsersController < ApplicationController
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
-  end
-  
-  def show # 追加
-   @user = User.find(params[:id])
   end
 
   def new
@@ -36,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:name, :email, :password, :area,
                                  :password_confirmation)
   end
   
