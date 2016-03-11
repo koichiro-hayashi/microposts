@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { maximum: 30 }
-  validates :area, length: { maximum: 30 }
+  validates :area, presence: true, length: { maximum: 30 }
   has_secure_password
   has_many :microposts
   
