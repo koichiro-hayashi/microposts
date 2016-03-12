@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destory]
+  resources :microposts
+  resources :relationships, only: [:cretate, :destory]
 end
